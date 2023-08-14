@@ -1,0 +1,22 @@
+{% url 'homepage' as homepage_url %}
+{% url 'categories' as categories_url %}
+
+<header class="px-3 py-4 mb-3 border-bottom">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-between">
+            <a href="{{ homepage_url }}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <div class="d-flex align-items-center">
+                    <!-- <img src="https://upload.wikimedia.org/wikipedia/ru/c/cf/%D0%9B%D0%BE%D0%B1%D0%BE%D1%81_%D0%A3%D0%9F%D0%9D%D0%A4%D0%9C_%28%D0%BB%D0%BE%D0%B3%D0%BE%29.png" alt width="32" height="32" class="rounded-circle me-2"> -->
+                    <h1 class="fs-3 m-0 fw-light">Традиции трикотажа</h1>
+                </div>
+            </a>
+
+            <ul class="nav col-12 col-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="{{ homepage_url }}" class="nav-link px-2 {% if request.path == homepage_url %}link-secondary{% else %}link-body-emphasis{% endif %}">Главная</a></li>
+                <li><a href="{{ categories_url }}" class="nav-link px-2 {% if request.path == categories_url %}link-secondary{% else %}link-body-emphasis{% endif %}">Каталог</a></li>
+                <li><a href="#" class="nav-link px-2 link-body-emphasis">О нас</a></li>
+                <li><a href="#" class="nav-link px-2 link-body-emphasis">Контакты</a></li>
+            </ul>
+        </div>
+    </div>
+</header>

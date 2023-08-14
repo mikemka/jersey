@@ -1,0 +1,18 @@
+{% extends 'includes/base.html' %}
+
+{% block content %}
+<div class="container">
+    <nav aria-label="breadcrumb" class="mt-2">
+        <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="{% url 'homepage' %}" class="text-decoration-none">Главная</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Каталог</li>
+        </ol>
+    </nav>
+
+    <div class="row mb-4">
+        {% for category in categories %}
+        {% include 'includes/category_card.html' with category=category %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

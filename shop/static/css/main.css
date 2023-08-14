@@ -1,0 +1,32 @@
+.category {
+    aspect-ratio: 1/1;
+    background-position: 50% 50% !important;
+    background-repeat: no-repeat;
+    background-size: cover;
+    backdrop-filter: grayscale(0) blur(0px);
+    transition: backdrop-filter 0.3s ease-in-out;
+}
+.category:hover {
+    backdrop-filter: grayscale(50%) blur(3px);
+}
+.product {
+    aspect-ratio: 1/1;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+    backdrop-filter: grayscale(0) blur(0px);
+    transition: backdrop-filter 0.35s ease-in-out;
+}
+.product div {
+    opacity: 0;
+    transition: opacity 0.35s ease-in-out;
+}
+.product:hover {
+    backdrop-filter: grayscale(50%) blur(5px) brightness(115%);
+}
+.product:hover div {
+    opacity: 1;
+}
+body {
+    font-family: 'Montserrat', sans-serif !important;
+}

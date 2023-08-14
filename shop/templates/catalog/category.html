@@ -1,0 +1,35 @@
+{% extends 'includes/base.html' %}
+
+{% block content %}
+<div class="container">
+    <nav aria-label="breadcrumb" class="mt-2">
+        <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="{% url 'homepage' %}" class="text-decoration-none">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'categories' %}" class="text-decoration-none">Каталог</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Категории</li>
+        </ol>
+    </nav>
+    <p class="display-2 mb-2 text-primary" style="font-weight: 800;">{{ category.title }}</p>
+
+    <div class="row">
+        {% for product in products %}
+        <div class="col col-12 col-md-6 col-lg-4 p-2">
+            <a href="{% url 'product' pk=category.id product_id=product.id %}" class="text-decoration-none">
+                <div style="background-image: url({{ product.get_image_500x500.url }});">
+                    <div class="w-100 h-100 d-flex justify-content-center align-items-end product">
+                        <div>
+                            <div class="text-center m-1 mb-0 display-6 bg-primary text-white px-4">
+                                {{ product.title }}
+                            </div>
+                            <div class="text-center m-1 display-6 text-white fw-bold">
+                                <span class="bg-primary px-4">{{ product.price }}₽</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

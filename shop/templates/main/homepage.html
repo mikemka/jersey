@@ -1,0 +1,23 @@
+{% extends 'includes/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row my-4">
+        {% for category in categories %}
+        {% include 'includes/category_card.html' with category=category %}
+        {% endfor %}
+    </div>
+    
+    <div class="py-5 text-start text-md-center d-flex flex-column align-items-center justify-content-center" style="min-height: 50vh;">
+        <p class="display-3 my-0">«Стиль, который говорит о тебе.»</p>
+        <p class="lead my-0">Наши усилия призваны сделать реальностью каждое ваше пожелание.</p>
+    </div>
+</div>
+
+<div class="bg-primary text-white py-5 d-flex flex-column align-items-center justify-content-center" style="min-height: 50vh;">
+    <div class="container">
+    <p class="display-2 fw-bold mb-0 mt-3" style="font-family: 'Raleway', serif; -webkit-text-stroke: 1px #fff; -webkit-text-fill-color: transparent !important; color: #fff;">Будь стильным —</p>
+        <p class="display-5 mt-0 mb-3">Одевайся в Традиции Трикотажа</p>
+    </div>
+</div>
+{% endblock content %}

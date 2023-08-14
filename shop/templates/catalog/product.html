@@ -1,0 +1,64 @@
+{% extends 'includes/base.html' %}
+
+{% block content %}
+<div class="container">
+    <nav aria-label="breadcrumb" class="mt-2">
+        <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="{% url 'homepage' %}" class="text-decoration-none">Главная</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'categories' %}" class="text-decoration-none">Каталог</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'category' pk=category.id %}" class="text-decoration-none">Категории</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ category.title }}</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col col-12 col-md-5 mt-3">
+            {% if images %}
+            <div class="f-carousel" id="carousel">
+                <div class="f-carousel__slide" data-thumb-src="{{ product.get_image_500x500.url }}" data-fancybox="gallery" data-src="{{ product.get_image_1024.url }}">
+                    <img alt data-lazy-src="{{ product.get_image_1024.url }}" class="w-100"/>
+                </div>
+                {% for image in images %}
+                <div class="f-carousel__slide" data-thumb-src="{{ image.get_image_500x500.url }}" data-fancybox="gallery" data-src="{{ image.get_image_1024.url }}">
+                    <img alt data-lazy-src="{{ image.get_image_1024.url }}" class="w-100"/>
+                </div>
+                {% endfor %}
+            </div>
+            <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/carousel/carousel.umd.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/carousel/carousel.thumbs.umd.js"></script>
+            <script>
+            const container = document.getElementById("carousel");
+            const options = {
+                Dots: false,
+                Thumbs: {
+                    type: "classic",
+                },
+            };
+            new Carousel(container, options, { Thumbs });
+            Fancybox.bind('[data-fancybox="gallery"]', {
+                //
+            });    
+            </script>
+
+            {% else %}
+            <img alt src="{{ product.get_image_1024.url }}" class="w-100"/>
+            {% endif %}
+        </div>
+        <div class="col col-12 col-md-7 mt-3">
+            <p class="display-5">{{ product.title }}</p>
+            <p class="lead">{{ product.description }}</p>
+            <p class="display-5">
+                <span class="bg-primary text-white fw-bold px-3">{{ product.price }}₽</span>
+            </p>
+            {% if all_sizes %}
+            <p class="lead">
+                Размеры:
+                {% for size in all_sizes %}
+                <span {% if size in product_sizes %}class="fw-bold"{% endif %}>{{ size.size }}</span>
+                {% endfor %}
+            </p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock content %}
